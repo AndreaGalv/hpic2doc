@@ -11,7 +11,7 @@ MPI
 
 Running ``hpic2`` with no arguments or with the ``--help`` option
 prints a help message describing usage of the executable.
-Typically, running an hPIC2 problem consists of running
+Typically, if hPIC2 was installed through manual build, running an hPIC2 problem consists of running
 
 .. code-block:: sh
 
@@ -42,6 +42,38 @@ Generally, if Kokkos is enabled with a thread-parallel host backend,
 hPIC2 will attempt to utilize all available threads unless
 otherwise specified.
 
+Spack
+-----
+
+When hPIC2 is installed through spack, the spack environment must me sourced before running an hPIC2 problem. Also make sure to load ``openmpi`` and ``hpic2``.
+
+Source spack
+
+.. code-block:: sh
+   . ~/spack/share/spack/setup-env.sh
+ 
+Load openmpi through spack
+
+.. code-block:: sh
+   spack load openmpi
+
+Load hpic2 or an hpic2 branch
+
+.. code-block:: sh
+   spack load hpic2
+
+Run the hpic2 problem
+
+.. code-block:: sh
+   hpic2 --i input_file.toml np=4 
+
+Where ``np``represents the number of MPI procs that will be used for the run. In addition, an optional “.out” file can be produced recording the outputs of the simulations at each time step.
+
+Print ¨.out¨ file
+
+.. code-block:: sh
+   hpic2 --i input_file.toml np=4 >> out_file.out
+   
 
 Illinois Campus Cluster
 -----------------------
